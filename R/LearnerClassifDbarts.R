@@ -91,25 +91,47 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
 
     predict_internal = function(task) {
       pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
+
+
       newdata = task$data(cols = task$feature_names) # get newdata
       #type = ifelse(self$predict_type == "response", "response", "prob") # this is for the randomForest package
 
       # Other possible vars: offset.test, combineChains, ...
+      setDF(newdata)
 
+
+      # TODO: Can't get prediction to pass the sanity checks on factor level ordering.
+      # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
+      lvls = rev(task$class_names)
+      #lvls = task$class_names
+      # Via https://github.com/mlr-org/mlr3learners/blob/094ac91b690c262d1e911cbbef98ae69fc9d2386/R/LearnerClassifLogReg.R#L48
+      #lvls = levels(self$model$data[[task$target_names]])
+      nlvl = length(lvls)
+
+      # This will return a matrix of predictions, where each column is an observation
+      # and each row is a sample from the posterior.
       p = invoke(predict, self$model, test = newdata, .args = pars)
-
-      print(names(p))
 
       # Transform predictions.
       # TODO: confirm that this is the correct element name.
-      pred = colMeans(stats::pnorm(p$yhat.test))
+      pred = colMeans(stats::pnorm(p))
+
+      # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
+      # TODO: need to do a PR to get this function exported.
+      prob = mlr3learners:::prob_vector_to_matrix(pred, lvls)
 
       # Return a prediction object with PredictionClassif$new() or PredictionRegr$new()
       if (self$predict_type == "response") {
-        # Round probability predictions to 1 or 0.
-        PredictionClassif$new(task = task, response = round(pred))
+        # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
+#        i = max.col(prob, ties.method = "random")
+#        response = factor(colnames(prob)[i], levels = lvls)
+        #PredictionClassif$new(task = task, response = response)
+        response = ifelse(pred < 0.5, lvls[1L], lvls[2L])
+
+        browser()
+        PredictionClassif$new(task = task, response = response)
       } else {
-        PredictionClassif$new(task = task, prob = pred)
+        PredictionClassif$new(task = task, prob = prob)
       }
     }
 
