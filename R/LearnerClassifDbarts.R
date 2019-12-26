@@ -18,6 +18,7 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
     initialize = function() {
       ps = ParamSet$new( # parameter set using the paradox package
         params = list(
+          # These reflect the defaults used by the dbarts package.
           ParamInt$new(id = "ntree", default = 200L, lower = 1L, tags = "train"),
           # Only used for continuous models, so can remove from LearnerClassif.
           #ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
@@ -68,10 +69,15 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
       # Extact just the features from the task data.
       data = task$data(cols = task$feature_names)
 
-      print(class(data))
-      print(table(sapply(data, class)))
+      # Convert from data.table to normal data.frame, just to be safe.
+      # Dbarts expects x.train to be a dataframe.
+      setDF(data)
 
+      # This will also extract a data.table
       outcome = task$data(cols = task$target_names)
+      setDF(outcome)
+      # Outcome will now be a factor vector.
+      outcome = outcome[[1]]
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
