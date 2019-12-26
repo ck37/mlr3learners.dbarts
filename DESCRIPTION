@@ -1,19 +1,20 @@
-Package: mlr3learnertemplate
-Title: Template for Adding New Learners to 'mlr3'
+Package: mlr3learner.dbarts
+Title: Dbarts Learner for 'mlr3'
 Version: 0.1.0
 Authors@R:
-    c(person(given = "given.name",
-             family = "family.name",
+    c(person(given = "Chris",
+             family = "Kennedy",
              role = "cre",
-             email = "email@email.com")
+             email = "chrisken@gmail.com")
       )
-Description: Template for adding new learners to 'mlr3'.
+Description: Dbarts learner for 'mlr3'.
 License: LGPL-3
 Depends:
     R (>= 3.1.0)
 Imports:
     checkmate,
     data.table,
+    dbarts,
     mlr3,
     mlr3misc,
     paradox,
@@ -29,4 +30,4 @@ Remotes:
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

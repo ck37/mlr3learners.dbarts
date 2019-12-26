@@ -1,4 +1,4 @@
-# mlr3learnertemplate
+# mlr3learner.dbarts
 
 [![Build Status](https://travis-ci.org/mlr-org/mlr3learnertemplate.svg?branch=master)](https://travis-ci.org/mlr-org/mlr3learnertemplate)
 
@@ -7,17 +7,6 @@ This packages provides a template for adding new learners for [mlr3](https://mlr
 Creating the actual learners is covered in the [mlr3book](https://mlr3book.mlr-org.com/extending-mlr3.html).
 This package serves as a starting point for learners to share with others.
 
-
-# Instructions
-
-This repository is a minimal working package with the randomForest learner.
-Fork this repository and adapt the code to your learner.
-
-## Rename Files
-Rename the following files to suit your learner:
-
-- `R/LearnerClassifRandomForest.R`
-- `tests/testthat/test_classif_randomForest.R`
 
 (For regression use the prefix "Regr" instead of "Classif". For example learners see https://github.com/mlr-org/mlr3learners)
 
