@@ -1,4 +1,4 @@
-Package: mlr3learner.dbarts
+Package: mlr3learners.dbarts
 Title: Dbarts Learner for 'mlr3'
 Version: 0.1.0
 Authors@R:

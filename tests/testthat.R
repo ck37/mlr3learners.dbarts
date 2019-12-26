@@ -1,4 +1,4 @@
 library(testthat)
-library(mlr3learner.dbarts)
+library(mlr3learners.dbarts)
 
-test_check("mlr3learnertemplate")
+test_check("mlr3learners.dbarts")
