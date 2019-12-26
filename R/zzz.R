@@ -12,4 +12,5 @@
 
   # add the learner to the dictionary
   x$add("classif.dbarts", LearnerClassifDbarts)
+  x$add("regr.dbarts", LearnerRegrDbarts)
 } # nocov end
