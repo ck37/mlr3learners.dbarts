@@ -80,6 +80,9 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
       # Outcome will now be a factor vector.
       outcome = outcome[[1]]
 
+      # Reorder factor levels to get probabilities for the positive class
+      outcome = factor(outcome, levels = c(task$positive, task$negative))
+
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
@@ -103,7 +106,7 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
 
       # TODO: Can't get prediction to pass the sanity checks on factor level ordering.
       # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
-      lvls = rev(task$class_names)
+      lvls = task$class_names
       #lvls = task$class_names
       # Via https://github.com/mlr-org/mlr3learners/blob/094ac91b690c262d1e911cbbef98ae69fc9d2386/R/LearnerClassifLogReg.R#L48
       #lvls = levels(self$model$data[[task$target_names]])
