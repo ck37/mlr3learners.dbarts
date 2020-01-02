@@ -21,8 +21,9 @@ LearnerRegrDbarts = R6Class("LearnerRegrDbarts", inherit = LearnerRegr, # Adapt 
         params = list(
           # These reflect the defaults used by the dbarts package.
           ParamInt$new(id = "ntree", default = 200L, lower = 1L, tags = "train"),
-          # Only used for continuous models
-          ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
+          # Only used for continuous models. Currently untyped to support the NULL default.
+          #ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
+          ParamUty$new(id = "sigest", default = NULL, tags = "train"),
           # Only used for continuous models
           ParamInt$new(id = "sigdf", default = 3L, lower = 1L, tags = "train"),
           # Only used for continuous models
@@ -109,7 +110,7 @@ LearnerRegrDbarts = R6Class("LearnerRegrDbarts", inherit = LearnerRegr, # Adapt 
       # TODO: confirm that this is the correct element name.
       pred = colMeans(p)
 
-      PredictionRegr$new(task = task, response = response)
+      mlr3::PredictionRegr$new(task = task)
     }
 
     # Add method for importance, if learner supports that.
