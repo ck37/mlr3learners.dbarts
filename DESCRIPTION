@@ -16,6 +16,7 @@ Imports:
     data.table,
     dbarts,
     mlr3,
+    mlr3learners,
     mlr3misc,
     paradox,
     R6,
@@ -26,6 +27,7 @@ Suggests:
 Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3misc,
+    mlr-org/mlr3learners,
     mlr-org/paradox
 Encoding: UTF-8
 NeedsCompilation: no
