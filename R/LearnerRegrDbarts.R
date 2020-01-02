@@ -110,7 +110,7 @@ LearnerRegrDbarts = R6Class("LearnerRegrDbarts", inherit = LearnerRegr, # Adapt 
       # TODO: confirm that this is the correct element name.
       pred = colMeans(p)
 
-      mlr3::PredictionRegr$new(task = task)
+      mlr3::PredictionRegr$new(task = task, response = pred)
     }
 
     # Add method for importance, if learner supports that.
