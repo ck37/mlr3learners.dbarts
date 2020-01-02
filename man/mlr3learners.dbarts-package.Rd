@@ -9,6 +9,11 @@
 Dbarts learner for 'mlr3'.
 }
 \author{
-\strong{Maintainer}: Chris Kennedy \email{chrisken@gmail.com}
+\strong{Maintainer}: Chris Kennedy \email{chrisken@gmail.com} (\href{https://orcid.org/0000-0001-7444-2766}{ORCID})
+
+Other contributors:
+\itemize{
+  \item Marc Becker \email{marcbecker@posteo.de} [contributor]
+}
 
 }

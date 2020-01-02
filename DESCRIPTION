@@ -5,7 +5,12 @@ Authors@R:
     c(person(given = "Chris",
              family = "Kennedy",
              role = "cre",
-             email = "chrisken@gmail.com")
+             email = "chrisken@gmail.com",
+             comment = c(ORCID = "0000-0001-7444-2766")),
+      person(given = "Marc",
+             family = "Becker",
+             role = "ctb",
+             email = "marcbecker@posteo.de")
       )
 Description: Dbarts learner for 'mlr3'.
 License: LGPL-3
