@@ -24,8 +24,7 @@ Imports:
     mlr3learners,
     mlr3misc,
     paradox,
-    R6,
-    randomForest
+    R6
 Suggests:
     testthat,
     rmarkdown
