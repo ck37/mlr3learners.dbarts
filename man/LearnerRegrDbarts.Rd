@@ -4,9 +4,12 @@
 \alias{LearnerRegrDbarts}
 \alias{mlr_learners_regr.dbarts}
 \title{Regression Dbarts Learner}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerRegr]{mlr3::LearnerRegr}.}
+\format{
+\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerRegr]{mlr3::LearnerRegr}.
+}
 \description{
-A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a classification dbarts implemented in dbarts::dbarts()] in package \CRANpkg{dbarts}.
+A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a classification dbarts implemented in
+dbarts::dbarts()] in package \CRANpkg{dbarts}.
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrDbarts}
@@ -15,8 +18,6 @@ A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a classification dbarts impleme
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{LearnerRegrDbarts$new()}}
-\item \href{#method-train_internal}{\code{LearnerRegrDbarts$train_internal()}}
-\item \href{#method-predict_internal}{\code{LearnerRegrDbarts$predict_internal()}}
 \item \href{#method-clone}{\code{LearnerRegrDbarts$clone()}}
 }
 }
@@ -35,30 +36,17 @@ A \link[mlr3:LearnerRegr]{mlr3::LearnerRegr} for a classification dbarts impleme
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
+Create a \code{LearnerRegrDbarts} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrDbarts$new()}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train_internal"></a>}}
-\subsection{Method \code{train_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrDbarts$train_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict_internal"></a>}}
-\subsection{Method \code{predict_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrDbarts$predict_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

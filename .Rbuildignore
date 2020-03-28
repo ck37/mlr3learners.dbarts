@@ -11,3 +11,7 @@
 ^attic$
 ^docs$
 ^pkgdown$
+^\.ccache$
+^\.github$
+^clang-.*
+^\.vscode$

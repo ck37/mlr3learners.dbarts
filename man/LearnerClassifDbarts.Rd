@@ -4,7 +4,9 @@
 \alias{LearnerClassifDbarts}
 \alias{mlr_learners_classif.dbarts}
 \title{Classification Dbarts Learner}
-\format{\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.}
+\format{
+\link[R6:R6Class]{R6::R6Class} inheriting from \link[mlr3:LearnerClassif]{mlr3::LearnerClassif}.
+}
 \description{
 A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification dbarts implemented in dbarts::dbarts()] in package \CRANpkg{dbarts}.
 }
@@ -15,8 +17,6 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification dbarts i
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{LearnerClassifDbarts$new()}}
-\item \href{#method-train_internal}{\code{LearnerClassifDbarts$train_internal()}}
-\item \href{#method-predict_internal}{\code{LearnerClassifDbarts$predict_internal()}}
 \item \href{#method-clone}{\code{LearnerClassifDbarts$clone()}}
 }
 }
@@ -35,30 +35,17 @@ A \link[mlr3:LearnerClassif]{mlr3::LearnerClassif} for a classification dbarts i
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
+Create a \code{LearnerRegrDbarts} object.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifDbarts$new()}\if{html}{\out{</div>}}
 }
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-train_internal"></a>}}
-\subsection{Method \code{train_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifDbarts$train_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-predict_internal"></a>}}
-\subsection{Method \code{predict_internal()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifDbarts$predict_internal(task)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -1,9 +1,3 @@
-if (FALSE) {
-  # Run manually if desired.
-  helper = list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE)
-  ok = lapply(helper, source)
-}
-
 context("regr.dbarts")
 
 test_that("autotest", {

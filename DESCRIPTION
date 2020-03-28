@@ -1,6 +1,6 @@
 Package: mlr3learners.dbarts
 Title: Dbarts Learner for 'mlr3'
-Version: 0.1.0
+Version: 0.1.0.9000
 Authors@R:
     c(person(given = "Chris",
              family = "Kennedy",
@@ -10,14 +10,12 @@ Authors@R:
       person(given = "Marc",
              family = "Becker",
              role = "ctb",
-             email = "marcbecker@posteo.de")
-      )
+             email = "marcbecker@posteo.de"))
 Description: Dbarts learner for 'mlr3'.
 License: LGPL-3
 Depends:
     R (>= 3.1.0)
 Imports:
-    checkmate,
     data.table,
     dbarts,
     mlr3,
@@ -26,14 +24,10 @@ Imports:
     paradox,
     R6
 Suggests:
-    testthat,
-    rmarkdown
-Remotes:
-    mlr-org/mlr3,
-    mlr-org/mlr3misc,
-    mlr-org/mlr3learners,
-    mlr-org/paradox
+    checkmate,
+    rmarkdown,
+    testthat
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0

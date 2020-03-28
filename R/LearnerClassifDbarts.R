@@ -14,19 +14,23 @@
 # \url{https://doi.org/10.1023/A:1010933404324}
 #'
 #' @export
-LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif, # Adapt the name to your learner. For regression learners inherit = LearnerRegr.
+LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
+
   public = list(
+
+    #' @description
+    #' Create a `LearnerRegrDbarts` object.
     initialize = function() {
       ps = ParamSet$new( # parameter set using the paradox package
         params = list(
           # These reflect the defaults used by the dbarts package.
           ParamInt$new(id = "ntree", default = 200L, lower = 1L, tags = "train"),
           # Only used for continuous models, so can remove from LearnerClassif.
-          #ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
+          # ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
           # Only used for continuous models, so can remove from LearnerClassif.
-          #ParamInt$new(id = "sigdf", default = 3L, lower = 1L, tags = "train"),
+          # ParamInt$new(id = "sigdf", default = 3L, lower = 1L, tags = "train"),
           # Only used for continuous models, so can remove from LearnerClassif.
-          #ParamDbl$new(id = "sigquant", default = 0.90, lower = 0, upper = 1, tags = "train"),
+          # ParamDbl$new(id = "sigquant", default = 0.90, lower = 0, upper = 1, tags = "train"),
           ParamDbl$new(id = "k", default = 2.0, lower = 0, tags = "train"),
           ParamDbl$new(id = "power", default = 2.0, lower = 0, tags = "train"),
           ParamDbl$new(id = "base", default = 0.95, lower = 0, tags = "train"),
@@ -60,11 +64,16 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
         param_set = ps,
         # TODO: add importance.
         # Parallel is giving an autotest error.
-        properties = c("weights", "twoclass")#, "parallel")
+        properties = c("weights", "twoclass"),
+        man = "mlr3learners.dbarts::mlr_learners_classif.bart"
       )
-    },
+    }
+  ),
 
-    train_internal = function(task) {
+  private = list(
+
+    .train = function(task) {
+
       pars = self$param_set$get_values(tags = "train")
 
       # Extact just the features from the task data.
@@ -89,20 +98,19 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
 
       # Use the mlr3misc::invoke function (it's similar to do.call())
       # y.train should either be a binary factor or have values {0, 1}
-      invoke(dbarts::bart, x.train = data, y.train = outcome,
-             .args = pars)
+      mlr3misc::invoke(dbarts::bart, x.train = data, y.train = outcome,
+        .args = pars)
     },
 
-    predict_internal = function(task) {
+    .predict = function(task) {
+
       pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
 
-
       newdata = task$data(cols = task$feature_names) # get newdata
-      #type = ifelse(self$predict_type == "response", "response", "prob") # this is for the randomForest package
+      # type = ifelse(self$predict_type == "response", "response", "prob") # this is for the randomForest package
 
       # Other possible vars: offset.test, combineChains, ...
       setDF(newdata)
-
 
       # TODO: Can't get prediction to pass the sanity checks on factor level ordering.
       # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
@@ -124,9 +132,9 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
       # Return a prediction object with PredictionClassif$new() or PredictionRegr$new()
       if (self$predict_type == "response") {
         # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
-#        i = max.col(prob, ties.method = "random")
-#        response = factor(colnames(prob)[i], levels = lvls)
-        #PredictionClassif$new(task = task, response = response)
+        #        i = max.col(prob, ties.method = "random")
+        #        response = factor(colnames(prob)[i], levels = lvls)
+        # PredictionClassif$new(task = task, response = response)
         response = ifelse(pred < 0.5, lvls[1L], lvls[2L])
 
         mlr3::PredictionClassif$new(task = task, response = response)
@@ -134,10 +142,5 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts", inherit = LearnerClassif,
         mlr3::PredictionClassif$new(task = task, prob = prob)
       }
     }
-
-    # Add method for importance, if learner supports that.
-    # It must return a sorted (decreasing) numerical, named vector.
-    # TODO later.
-    # importance = function() { }
   )
 )
